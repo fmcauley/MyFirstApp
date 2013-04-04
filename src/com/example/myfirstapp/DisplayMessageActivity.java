@@ -15,6 +15,7 @@ public class DisplayMessageActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		// Get the message from the Intent
 		Intent intent = getIntent();
 		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
@@ -23,6 +24,15 @@ public class DisplayMessageActivity extends Activity {
 		TextView textView = new TextView(this);
 		textView.setTextSize(40);
 		textView.setText(message);
+		
+		// Set the content
+		setContentView(textView);
+		
+		// Show the back button
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+		{
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 
